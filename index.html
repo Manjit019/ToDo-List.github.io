@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo list</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header><h2>ToDo List App</h2></header>
+    <main>
+      <div class="parent-container">
+        <div class="input-container">
+          <input
+            type="text"
+            name="addtask"
+            id="addtask "
+            placeholder="Enter a New Task "
+          />
+          <input type="button" value="+" class="btn" />
+        </div>
+        <div class="progress-container">
+            <div class="progress-left">
+                <div class="bar">
+                    <div class="progress">
+                      
+                    </div>
+        
+                </div>
+                <p>70% Completed</p>
+            </div>
+            <div class="progress-right">
+                <div class="progress-circle">
+                    3/4
+                </div>
+            </div>
+        </div>
+        <div class="task-container">
+            <div class="task-menu">
+                <ul>
+                    <li class="menu active">All</li>
+                    <li class="menu">Pending</li>
+                    <li class="menu">completed</li>
+                </ul>
+            </div>
+            <div class="task-todoes">
+                <ul class="todo">
+                    
+                  <li><span>⏺️</span>Go to GYM  
+                      <input type="button" value="X" class="btn-danger close">
+                    </li>
+                    
+                </ul>
+                <!-- <span></span> -->
+            </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
