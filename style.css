@@ -296,7 +296,8 @@ main {
   justify-content: space-between;
   align-items: end;
   padding: 1rem;
-
+  position:sticky;
+  bottom:0;
   & h3 {
     font-size: 16px;
   }
