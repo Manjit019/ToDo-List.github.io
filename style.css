@@ -1,5 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap");
 
 * {
   margin: 0;
@@ -35,8 +34,8 @@ body {
   color: black;
   background-color: #ffffff8a;
 }
-.btn-danger{
-  padding:2px 8px;
+.btn-danger {
+  padding: 2px 8px;
   background-color: #fe5d5d;
   border: none;
   border-radius: 50px;
@@ -49,13 +48,13 @@ body {
   -moz-transition: all 0.3s;
   -ms-transition: all 0.3s;
   -o-transition: all 0.3s;
-  &:hover{
+  &:hover {
     color: #fff;
     background-color: #f72525;
     cursor: pointer;
   }
 }
-header h2{
+header h2 {
   color: #fff;
   text-align: center;
   margin-top: 2rem;
@@ -64,7 +63,8 @@ main {
   width: 60%;
   margin: 1rem auto;
   background: #ffffff39;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -76,7 +76,6 @@ main {
   /* filter: blur(10px);
     -webkit-filter: blur(10px); */
   padding: 1rem;
-  
 }
 
 .input-container {
@@ -91,7 +90,8 @@ main {
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 
   & input[type="text"] {
     width: 100%;
@@ -104,14 +104,14 @@ main {
     -ms-border-radius: 50px;
     -o-border-radius: 50px;
 
-   &::placeholder{
+    &::placeholder {
       color: #bee6ecbb;
       font-size: 15px;
     }
-    &:focus{
+    &:focus {
       color: #ffffff;
     }
-    &:focus-visible{
+    &:focus-visible {
       outline: none;
     }
   }
@@ -133,7 +133,14 @@ main {
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
   padding: 1rem;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+
+  & p {
+    color: #fff;
+    padding-top: 10px;
+    font-size: 14px;
+  }
 }
 .bar,
 .progress {
@@ -164,11 +171,11 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   & .progress-circle {
-    width: 50%;
+    width: 70%;
     aspect-ratio: 1;
-    padding: 1rem;
     background: #000;
     color: #ffffff;
     display: flex;
@@ -191,7 +198,8 @@ main {
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
   padding-bottom: 1rem;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
 .task-menu {
@@ -208,8 +216,9 @@ main {
       -moz-transition: all 0.3s;
       -ms-transition: all 0.3s;
       -o-transition: all 0.3s;
-      
-      &:hover,&.active{
+
+      &:hover,
+      &.active {
         cursor: pointer;
         background: #0000008a;
         color: #fff;
@@ -219,7 +228,6 @@ main {
         -ms-border-radius: 50px;
         -o-border-radius: 50px;
       }
-    
     }
   }
 }
@@ -230,18 +238,29 @@ main {
   padding: 10px 1rem;
 }
 .todo {
-  /* background: #00000037; */
-  padding: 10px 1rem;
-  display: flex;
-  justify-content: space-between;
+  width: 100%;
+  /* padding: 10px 1rem; */
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
-  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  & .message {
+    text-align: center;
+    font-size: 14px;
+    color: #030101;
+    padding: 10px;
+    border: 2px solid rgb(43, 33, 33);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+  }
   & li {
     width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
     list-style: none;
     color: #100f0f;
     border-radius: 10px;
@@ -250,15 +269,63 @@ main {
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
     position: relative;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+      rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
   }
 }
-.close{
-  position: absolute;
-  top:0;
-  right: 0;
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+
+  & span {
+    text-decoration: none;
+    opacity: 1;
+  }
 }
-@media(width<870px) {
-  main{
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.copyright {
+  width: 100%;
+  color: #fff;
+  background: #0000007d;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding: 1rem;
+
+  & h3 {
+    font-size: 16px;
+  }
+  & .social {
+    display: flex;
+    gap: 1rem;
+  }
+  & .fa-brands {
+    color: #fff;
+    background-color: #00000058;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    &:hover {
+      background-color: #000000a5;
+    }
+  }
+}
+@media (width<870px) {
+  main {
     width: 90%;
+  }
+  .copyright {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
   }
 }

@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ToDo list</title>
     <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/e2966aec31.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header><h2>ToDo List App</h2></header>
@@ -12,6 +16,7 @@
       <div class="parent-container">
         <div class="input-container">
           <input
+            class="userInput"
             type="text"
             name="addtask"
             id="addtask "
@@ -27,7 +32,7 @@
                     </div>
         
                 </div>
-                <p>70% Completed</p>
+                <p>70% tasks Completed</p>
             </div>
             <div class="progress-right">
                 <div class="progress-circle">
@@ -45,16 +50,61 @@
             </div>
             <div class="task-todoes">
                 <ul class="todo">
-                    
-                  <li><span>⏺️</span>Go to GYM  
-                      <input type="button" value="X" class="btn-danger close">
-                    </li>
-                    
+                 <div class="message">Nothing in tasks!</div>
+                 <li class="completed"><span>⏺️d</span>Go to GYM  
+                  <input type="button" value="X" class="btn-danger close">
+                </li>
+                  </li>
                 </ul>
                 <!-- <span></span> -->
             </div>
         </div>
       </div>
     </main>
+    <div class="copyright">
+      <h5>Copyright ©2024  |  All rights Reserved</h5>
+      <h6 style="color: rgb(255, 170, 0)">
+        Made by
+        <a href="#" target="_blank"
+          ><strong
+            style="
+              background-color: #2b8e9de3;
+              color: rgb(255, 255, 0);
+              padding: 3px 8px;
+              border-radius: 20px;
+            "
+            >Manjit</strong
+          ></a
+        >
+      </h6>
+      <footer>
+      <div class="social">
+        <a href="https://www.instagram.com/.manjitk.019_____" target="_blank">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a
+          href="https://m.facebook.com/p/Manjit-Kumar-100051075008192/?wtsid=rdr_0jBLrmR72ct9vll4A"
+          target="_blank"
+        >
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a
+          href="https://x.com/MNCreativezone2?t=5RdojkrHk5LuMGHt_gcgnw&s=09"
+          target="_blank"
+        >
+          <i class="fa-brands fa-square-x-twitter"></i>
+        </a>
+        <a href="https://github.com/Ssoftwaredeveloper21" target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/manjit-kumar-b33a11264?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+          target="_blank"
+        >
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+      </div>
+    </footer>
+    <script src="script.js"></script>
   </body>
 </html>
