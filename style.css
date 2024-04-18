@@ -304,7 +304,8 @@ footer{
   position:fixed;
   bottom: 0;
   padding: 1rem;
-
+  position:sticky;
+  bottom:0;
   & h3 {
     font-size: 16px;
   }
