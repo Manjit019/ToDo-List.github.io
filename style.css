@@ -12,7 +12,7 @@ body {
   background-size: cover;
   background: #113261aa;
 }
-a{
+a {
   text-decoration: none;
 }
 .btn {
@@ -40,7 +40,8 @@ a{
 .btn-danger {
   padding: 2px 9px;
   /* background-color: #fe5d5d; */
-  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px inset;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px inset;
   border: none;
   border-radius: 50px;
   -webkit-border-radius: 50px;
@@ -54,7 +55,7 @@ a{
   -o-transition: all 0.3s;
   &:hover {
     color: #fff;
-    background-color: #f72525;
+    background-color: #ff2c2c;
     cursor: pointer;
   }
 }
@@ -64,7 +65,6 @@ header h2 {
   text-transform: uppercase;
   text-shadow: -1px -2px 0px rgba(255, 208, 208, 0.606);
   margin-top: 2rem;
-  
 }
 main {
   width: 60%;
@@ -216,12 +216,15 @@ main {
 }
 
 .task-menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
   & ul {
     display: flex;
     gap: 1rem;
-    padding: 0.4rem 1rem;
     & .menu {
-      font-size: 18px;
+      font-size: 16px;
       list-style: none;
       padding: 4px 10px;
       transition: all 0.3s;
@@ -243,6 +246,11 @@ main {
       }
     }
   }
+  & .btn-clear {
+    height: 90%;
+    padding: 0 10px;
+    background-color: #e66984dc;
+  }
 }
 
 .task-todoes {
@@ -258,7 +266,7 @@ main {
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
-  & .message {
+  /* & .message {
     text-align: center;
     font-size: 14px;
     color: #030101;
@@ -269,7 +277,7 @@ main {
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
-  }
+  } */
   & li {
     width: 100%;
     padding: 10px;
@@ -286,11 +294,23 @@ main {
       rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
   }
 }
+.message {
+  text-align: center;
+  font-size: 14px;
+  color: #030101;
+  padding: 10px;
+  border: 2px solid rgb(43, 33, 33);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
 .completed {
   text-decoration: line-through;
   opacity: 0.5;
 }
-.completed span{
+.completed span {
   display: none;
 }
 .close {
@@ -298,7 +318,7 @@ main {
   top: 10px;
   right: 10px;
 }
-footer{
+footer {
   width: 100%;
   position: relative;
   margin-top: 3rem;
@@ -309,11 +329,11 @@ footer{
   background: #0000007d;
   display: flex;
   justify-content: space-between;
-  position:fixed;
+  position: fixed;
   bottom: 0;
   padding: 1rem;
-  position:sticky;
-  bottom:0;
+  position: sticky;
+  bottom: 0;
   & h5 {
     font-size: 16px;
     font-weight: 400;
@@ -340,6 +360,10 @@ footer{
 @media (width<870px) {
   main {
     width: 90%;
+  }
+  .menu {
+    font-size: 10px;
+
   }
   .copyright {
     flex-direction: column;

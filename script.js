@@ -4,6 +4,8 @@ const todoLists = document.querySelector(".todo");
 const totalTasks = document.querySelector("#total-tasks");
 const completedTasks = document.querySelector("#task-completed");
 
+
+
 addBtn.addEventListener("click", () => {
     if (userInput.value == "") {
         alert("You must have to write something.");
@@ -15,6 +17,7 @@ addBtn.addEventListener("click", () => {
     <input type="button" value="X" class="btn-danger close">
   `
         todoLists.appendChild(todoes);
+        saveTask();
         document.querySelector(".message").style.display = "none";
         userInput.value = "";
     }
@@ -30,16 +33,20 @@ todoLists.addEventListener('click', (e) => {
         e.target.classList.toggle("completed");
         e.target.childNodes[0].classList.toggle("fa-circle-check");
         completedTasks.textContent = document.querySelectorAll(".todo li.completed").length;
+        saveTask();
         progress();
+        
     }
 
     if (e.target.tagName === "INPUT") {
         e.target.parentElement.remove();
         totalTasks.textContent = (document.getElementsByTagName("li").length - 3);
         completedTasks.textContent = document.querySelectorAll(".todo li.completed").length;
+        saveTask();
         progress();
+       
     }
-
+   
     if (document.getElementsByTagName("li").length == 3) {
         document.querySelector(".message").style.display = "block";
     }
@@ -60,3 +67,21 @@ function progress() {
         document.querySelector("#percent").textContent = percent;
     }
 }
+// function clearAll(){
+//   todoLists.remove();
+// }
+// function pendingTodoes{
+
+// }
+
+function saveTask(){
+    localStorage.setItem("todoLists",todoLists.innerHTML)
+}
+function showtasks(){
+   todoLists.innerHTML=localStorage.getItem("todoLists");
+   totalTasks.textContent = (document.getElementsByTagName("li").length - 3);
+   completedTasks.textContent = document.querySelectorAll(".todo li.completed").length;
+   progress();
+}
+
+showtasks();
