@@ -17,11 +17,12 @@ addBtn.addEventListener("click", () => {
     <input type="button" value="X" class="btn-danger close">
   `
         todoLists.appendChild(todoes);
-        saveTask();
+        
         document.querySelector(".message").style.display = "none";
         userInput.value = "";
     }
     totalTasks.textContent = document.getElementsByTagName("li").length - 3;
+    saveTask();
 })
 
 
