@@ -32,6 +32,7 @@ todoLists.addEventListener('click', (e) => {
     if (e.target.tagName === "LI") {
         e.target.classList.toggle("completed");
         e.target.childNodes[0].classList.toggle("fa-circle-check");
+        totalTasks.textContent = document.getElementsByTagName("li").length - 3;
         completedTasks.textContent = document.querySelectorAll(".todo li.completed").length;
         saveTask();
         progress();
