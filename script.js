@@ -1,8 +1,8 @@
 const userInput = document.querySelector(".userInput");
 const addBtn = document.querySelector(".btn");
 const todoLists = document.querySelector(".todo");
-const totalTasks=document.querySelector("#total-tasks");
-const completedTasks=document.querySelector("#task-completed");
+const totalTasks = document.querySelector("#total-tasks");
+const completedTasks = document.querySelector("#task-completed");
 
 addBtn.addEventListener("click", () => {
     if (userInput.value == "") {
@@ -18,26 +18,44 @@ addBtn.addEventListener("click", () => {
         document.querySelector(".message").style.display = "none";
         userInput.value = "";
     }
-    totalTasks.textContent=document.getElementsByTagName("li").length - 3;
+    totalTasks.textContent = document.getElementsByTagName("li").length - 3;
 })
 
 
 
 todoLists.addEventListener('click', (e) => {
     console.log(e);
-    let i=0;
+
     if (e.target.tagName === "LI") {
         e.target.classList.toggle("completed");
-        // e.target.childNodes[0].className="fa-solid fa-circle-check";
-        e.target.childNodes[0].classList.toggle("fa-circle-check")
+        e.target.childNodes[0].classList.toggle("fa-circle-check");
+        completedTasks.textContent = document.querySelectorAll(".todo li.completed").length;
+        progress();
     }
+
     if (e.target.tagName === "INPUT") {
         e.target.parentElement.remove();
-        totalTasks.textContent=(document.getElementsByTagName("li").length - 3);
+        totalTasks.textContent = (document.getElementsByTagName("li").length - 3);
+        completedTasks.textContent = document.querySelectorAll(".todo li.completed").length;
+        progress();
     }
 
     if (document.getElementsByTagName("li").length == 3) {
         document.querySelector(".message").style.display = "block";
     }
-    // 
+
 });
+
+function progress() {
+
+    if (totalTasks.textContent == 0) {
+        document.querySelector(".progress").style.width = 0;
+        document.querySelector("#percent").textContent = "0%";
+    }
+    else {
+        let percent;
+        percent = (completedTasks.textContent / totalTasks.textContent) * 100 + "%";
+        document.querySelector(".progress").style.width = percent;
+        document.querySelector("#percent").textContent = percent;
+    }
+}

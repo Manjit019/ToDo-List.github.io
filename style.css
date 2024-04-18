@@ -12,6 +12,9 @@ body {
   background-size: cover;
   background: #113261aa;
 }
+a{
+  text-decoration: none;
+}
 .btn {
   width: fit-content;
   padding: 10px;
@@ -157,9 +160,14 @@ main {
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
+  transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
 }
 .progress {
-  width: 80%;
+  width: 5%;
   background: #fff;
 }
 
@@ -306,8 +314,9 @@ footer{
   padding: 1rem;
   position:sticky;
   bottom:0;
-  & h3 {
+  & h5 {
     font-size: 16px;
+    font-weight: 400;
   }
   & .social {
     display: flex;
@@ -335,6 +344,6 @@ footer{
   .copyright {
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 0.6rem;
   }
 }
