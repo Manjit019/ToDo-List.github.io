@@ -54,7 +54,8 @@ function progress() {
     }
     else {
         let percent;
-        percent = (completedTasks.textContent / totalTasks.textContent) * 100 + "%";
+        percent = (completedTasks.textContent / totalTasks.textContent) * 100 ;
+        percent=Math.round(percent)+ "%";
         document.querySelector(".progress").style.width = percent;
         document.querySelector("#percent").textContent = percent;
     }
