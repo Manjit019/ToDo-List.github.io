@@ -277,7 +277,7 @@ main {
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
-  /* & .message {
+   & .message {
     text-align: center;
     font-size: 14px;
     color: #030101;
@@ -288,7 +288,7 @@ main {
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
-  } */
+  } 
   & li {
     width: 100%;
     padding: 10px;
@@ -305,7 +305,7 @@ main {
       rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
   }
 }
-.message {
+/*.message {
   text-align: center;
   font-size: 14px;
   color: #030101;
@@ -316,7 +316,7 @@ main {
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
-}
+}*/
 .completed {
   text-decoration: line-through;
   opacity: 0.5;
