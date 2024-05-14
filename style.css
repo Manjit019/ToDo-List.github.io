@@ -340,7 +340,7 @@ footer {
   & h5 {
     font-size: 16px;
     font-weight: 400;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
   }
   & .social {
     display: flex;
@@ -386,5 +386,8 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
+    & h5{
+      font-size: 15px;
+    }
   }
 }
