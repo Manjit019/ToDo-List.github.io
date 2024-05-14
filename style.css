@@ -217,7 +217,7 @@ main {
 
 .task-menu {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
   & ul {
@@ -244,12 +244,23 @@ main {
         -ms-border-radius: 50px;
         -o-border-radius: 50px;
       }
+
+      &:hover{
+          background: #94949476;
+          color: black;
+      }
     }
   }
   & .btn-clear {
     height: 90%;
     padding: 0 10px;
-    background-color: #e66984dc;
+    background-color: #ff7878e3;
+    color: #0c0505;
+
+    &:hover{
+      background-color: #000000dc;
+    color: #fff;
+    }
   }
 }
 
@@ -314,6 +325,7 @@ main {
   display: none;
 }
 .close {
+  aspect-ratio: 1;
   position: absolute;
   top: 10px;
   right: 10px;
@@ -326,7 +338,7 @@ footer {
 .copyright {
   width: 100%;
   color: #fff;
-  background: #0000007d;
+  background: #00000000;
   display: flex;
   justify-content: space-between;
   position: fixed;

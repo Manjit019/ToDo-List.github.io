@@ -6,52 +6,91 @@ const completedTasks = document.querySelector("#task-completed");
 
 
 
+var tasks = [];
+var localdata = localStorage.getItem("my-todoes");
+if (localdata != null) {
+    tasks = JSON.parse(localdata);
+    renderTasks("all");
+}
+
 addBtn.addEventListener("click", () => {
     if (userInput.value == "") {
         alert("You must have to write something.");
     }
     else {
-        const todoes = document.createElement("li");
         const task = userInput.value.trim();
-        todoes.innerHTML = `<i class="fa-solid"></i><span>O</span> ${task}  
-    <input type="button" value="X" class="btn-danger close">
-  `
-        todoLists.appendChild(todoes);
-        saveTask();
-        document.querySelector(".message").style.display = "none";
         userInput.value = "";
+        const tasksObj = {
+            taskId: tasks.length + 1,
+            name: task,
+            status: "incomplete"
+        };
+        tasks.push(tasksObj);
+        saveTask();
+        renderTasks();
+        progress();
     }
-    totalTasks.textContent = document.getElementsByTagName("li").length - 3;
 })
 
 
+function renderTasks(filter) {
 
-todoLists.addEventListener('click', (e) => {
-    console.log(e);
+    todoLists.innerHTML = "";
+    if (tasks.length == 0) {
+        totalTasks.textContent = "0";
+        todoLists.innerHTML=`<div class="message">NO tasks! </div>`;
+    }
+    else {
+        tasks.forEach(task => {
+            if (task.status == filter || filter == "all") {
+                let li = document.createElement("li");
+                let message= document.createElement("div");
+                message.innerHTML=`<div class="message">NO tasks! </div>`;
+                li.className = task.status;
 
-    if (e.target.tagName === "LI") {
-        e.target.classList.toggle("completed");
-        e.target.childNodes[0].classList.toggle("fa-circle-check");
-        completedTasks.textContent = document.querySelectorAll(".todo li.completed").length;
-        saveTask();
+                li.innerHTML = `<i class="fa-solid"></i><span>O</span> ${task.name}  
+<input type="button" value="X" class="btn-danger close">
+`           ;
+                todoLists.appendChild(li)||todoLists.appendChild(message);
+
+                li.addEventListener("click", (e) => {
+
+                    if (e.target.className === "completed") {
+                        e.target.className = "incomplete";
+                        task.status = "incomplete";
+
+                    }
+                    else {
+                        e.target.className = "completed";
+                        task.status = "completed";
+                    }
+
+                    if (e.target.tagName === "INPUT") {
+
+                        let index = tasks.findIndex(m => m.taskId == event.target.taskId);
+                        tasks.splice(index, 1);
+                        totalTasks.textContent = tasks.length;
+                        e.target.parentElement.remove();
+                        progress();
+                        saveTask();
+                    }
+                    completedTasks.textContent = document.querySelectorAll("li.completed").length;
+                    progress();
+                    saveTask();
+                });
+            }
+        });
+
+        totalTasks.textContent = tasks.length;
+        completedTasks.textContent = document.querySelectorAll("li.completed").length;
         progress();
-        
-    }
-
-    if (e.target.tagName === "INPUT") {
-        e.target.parentElement.remove();
-        totalTasks.textContent = (document.getElementsByTagName("li").length - 3);
-        completedTasks.textContent = document.querySelectorAll(".todo li.completed").length;
         saveTask();
-        progress();
-       
     }
-   
-    if (document.getElementsByTagName("li").length == 3) {
-        document.querySelector(".message").style.display = "block";
-    }
-
-});
+    // if(tasks.length==0){
+    //     todoLists.innerHTML=`<div class="message">NO tasks! </div>`;
+    // }
+}
+renderTasks("all");
 
 function progress() {
 
@@ -61,27 +100,53 @@ function progress() {
     }
     else {
         let percent;
-        percent = (completedTasks.textContent / totalTasks.textContent) * 100 ;
-        percent=Math.round(percent)+ "%";
+        percent = (completedTasks.textContent / totalTasks.textContent) * 100;
+        percent = Math.round(percent) + "%";
         document.querySelector(".progress").style.width = percent;
         document.querySelector("#percent").textContent = percent;
     }
 }
-// function clearAll(){
-//   todoLists.remove();
-// }
-// function pendingTodoes{
-
-// }
-
-function saveTask(){
-    localStorage.setItem("todoLists",todoLists.innerHTML)
+function clearAll() {
+    tasks.splice(0);
+    renderTasks();
+    completedTasks.textContent = "0";
+    progress();
 }
-function showtasks(){
-   todoLists.innerHTML=localStorage.getItem("todoLists");
-   totalTasks.textContent = (document.getElementsByTagName("li").length - 3);
-   completedTasks.textContent = document.querySelectorAll(".todo li.completed").length;
-   progress();
+function allTodoes() {
+    renderTasks("all");
+    document.getElementById('txt').textContent="tasks completed";
+}
+function pendingTodoes() {
+    renderTasks("incomplete");
+
+    completedTasks.textContent = document.querySelectorAll("li.complete").length;
+    totalTasks.textContent =document.querySelectorAll("li.incomplete").length;
+    progress();
+    document.getElementById('txt').textContent="completed pending tasks";
+    // if(completedTasks.textContent==0){
+    //     todoLists.innerHTML=`<div class="message">NO Pending tasks! </div>`;
+    // }
+}
+function completedTodoes() {
+    renderTasks("completed");
+    
+    document.getElementById('txt').textContent="tasks completed";
+}
+function saveTask() {
+    const myTasks = JSON.stringify(tasks);
+    localStorage.setItem("my-todoes", myTasks);
 }
 
-showtasks();
+
+
+//Active menu bar
+let menu = document.querySelectorAll(".task-menu li");
+
+for (let i = 0; i < menu.length; i++) {
+    menu[i].addEventListener("click", function () {
+        let current = document.querySelector(".active");
+        current.className = current.className.replace("active", "");
+        this.className += "active";
+    })
+}
+

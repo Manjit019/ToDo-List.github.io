@@ -32,7 +32,7 @@
                     </div>
         
                 </div>
-                <p> <span id="percent">0%</span> tasks Completed</p>
+                <p> <span id="percent">0%</span> <span id="txt">tasks Completed</span></p>
             </div>
             <div class="progress-right">
                 <div class="progress-circle">
@@ -43,7 +43,7 @@
         <div class="task-container">
             <div class="task-menu">
                 <ul>
-                    <li class="menu active" onclick="showtasks()">All</li>
+                    <li class="menu active" onclick="allTodoes()">All</li>
                     <li class="menu " onclick="pendingTodoes()">Pending</li>
                     <li class="menu " onclick="completedTodoes()">completed</li>
                 </ul>
@@ -53,7 +53,7 @@
               
                 <ul class="todo">
                   <div class="message">NO tasks! </div>
-
+                  <li></li>
                 </ul>
                 <!-- <span></span> -->
             </div>
