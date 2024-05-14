@@ -28,7 +28,6 @@ addBtn.addEventListener("click", () => {
         tasks.push(tasksObj);
         renderTasks("all");
         progress();
-        saveTask();
     }
 })
 
@@ -55,12 +54,12 @@ function renderTasks(filter) {
                 li.addEventListener("click", (e) => {
 
                     if (e.target.className === "completed") {
-                        e.target.className = "incomplete";
+                        e.target.className = "incomplete";    
+                        task.status="incomplete";                 
                     }
                     else {
                         e.target.className = "completed";
                         task.status = "completed";
-                        // console.log(e)
                     }
 
                     if (e.target.tagName === "INPUT") {
@@ -77,7 +76,6 @@ function renderTasks(filter) {
                     saveTask();
 
                 });
-                console.log(li)
                
             }
         });
@@ -90,7 +88,6 @@ function renderTasks(filter) {
     }
 
 }
-renderTasks("all");
 
 function progress() {
 

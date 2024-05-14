@@ -372,7 +372,7 @@ footer {
     & ul {
       gap: 5px;
       & .menu {
-        font-size: 12px;
+        font-size: 14px;
       }
     }
     & .btn-clear {
