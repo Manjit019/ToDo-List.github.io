@@ -46,7 +46,7 @@ function renderTasks(filter) {
                 let li = document.createElement("li");
                 li.className = task.status;
 
-                li.innerHTML = `<i class="fa-solid"></i><span>O</span> ${task.name}  
+                li.innerHTML = `<i class=""></i><span>O</span> ${task.name}  
 <input type="button" value="X" class="btn-danger close">
 `           ;
                 todoLists.appendChild(li);
@@ -56,12 +56,11 @@ function renderTasks(filter) {
 
                     if (e.target.className === "completed") {
                         e.target.className = "incomplete";
-                        task.status = "incomplete";
-
                     }
                     else {
                         e.target.className = "completed";
                         task.status = "completed";
+                        // console.log(e)
                     }
 
                     if (e.target.tagName === "INPUT") {
@@ -78,9 +77,9 @@ function renderTasks(filter) {
                     saveTask();
 
                 });
-              
+                console.log(li)
+               
             }
-
         });
 
         totalTasks.textContent = tasks.length;
@@ -116,8 +115,8 @@ function clearAll() {
 function allTodoes() {
     renderTasks("all");
     document.getElementById('txt').textContent = "tasks completed";
-    if(document.querySelectorAll(".todo li").length==0){
-        todoLists.innerHTML=`<div class="message">NO Tasks! Yet </div>`;
+    if (document.querySelectorAll(".todo li").length == 0) {
+        todoLists.innerHTML = `<div class="message">NO Tasks! Yet </div>`;
     }
 }
 function pendingTodoes() {
@@ -127,17 +126,18 @@ function pendingTodoes() {
     totalTasks.textContent = document.querySelectorAll("li.incomplete").length;
     progress();
     document.getElementById('txt').textContent = "completed pending tasks";
-    if(document.querySelectorAll("li.incomplete").length==0){
-        todoLists.innerHTML=`<div class="message">NO Pending Tasks!</div>`;
+    if (document.querySelectorAll("li.incomplete").length == 0) {
+        todoLists.innerHTML = `<div class="message">NO Pending Tasks!</div>`;
     }
 }
 function completedTodoes() {
     renderTasks("completed");
 
     document.getElementById('txt').textContent = "tasks completed";
-    if(document.querySelectorAll("li.completed").length==0){
-        todoLists.innerHTML=`<div class="message">NO Completed Tasks!Yet </div>`;
+    if (document.querySelectorAll("li.completed").length == 0) {
+        todoLists.innerHTML = `<div class="message">NO Completed Tasks!Yet </div>`;
     }
+    
 }
 function saveTask() {
     const myTasks = JSON.stringify(tasks);
