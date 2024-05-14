@@ -105,9 +105,10 @@ function progress() {
 }
 function clearAll() {
     tasks.splice(0);
-    renderTasks();
+    renderTasks("all");
     completedTasks.textContent = "0";
     progress();
+    saveTask();
 }
 function allTodoes() {
     renderTasks("all");
