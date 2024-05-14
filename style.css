@@ -370,6 +370,9 @@ footer {
   li {
     font-size: 14px;
   }
+  #txt{
+    font-size: 11px;
+  }
   .task-menu {
     & ul {
       gap: 5px;
