@@ -26,9 +26,9 @@ addBtn.addEventListener("click", () => {
             status: "incomplete"
         };
         tasks.push(tasksObj);
-        saveTask();
-        renderTasks();
+        renderTasks("all");
         progress();
+        saveTask();
     }
 })
 
@@ -38,20 +38,19 @@ function renderTasks(filter) {
     todoLists.innerHTML = "";
     if (tasks.length == 0) {
         totalTasks.textContent = "0";
-        todoLists.innerHTML=`<div class="message">NO tasks! </div>`;
+        todoLists.innerHTML = `<div class="message">NO tasks! </div>`;
     }
     else {
         tasks.forEach(task => {
             if (task.status == filter || filter == "all") {
                 let li = document.createElement("li");
-                let message= document.createElement("div");
-                message.innerHTML=`<div class="message">NO tasks! </div>`;
                 li.className = task.status;
 
                 li.innerHTML = `<i class="fa-solid"></i><span>O</span> ${task.name}  
 <input type="button" value="X" class="btn-danger close">
 `           ;
-                todoLists.appendChild(li)||todoLists.appendChild(message);
+                todoLists.appendChild(li);
+
 
                 li.addEventListener("click", (e) => {
 
@@ -77,18 +76,20 @@ function renderTasks(filter) {
                     completedTasks.textContent = document.querySelectorAll("li.completed").length;
                     progress();
                     saveTask();
+
                 });
+              
             }
+
         });
 
         totalTasks.textContent = tasks.length;
         completedTasks.textContent = document.querySelectorAll("li.completed").length;
         progress();
         saveTask();
+
     }
-    // if(tasks.length==0){
-    //     todoLists.innerHTML=`<div class="message">NO tasks! </div>`;
-    // }
+
 }
 renderTasks("all");
 
@@ -114,23 +115,29 @@ function clearAll() {
 }
 function allTodoes() {
     renderTasks("all");
-    document.getElementById('txt').textContent="tasks completed";
+    document.getElementById('txt').textContent = "tasks completed";
+    if(document.querySelectorAll(".todo li").length==0){
+        todoLists.innerHTML=`<div class="message">NO Tasks! Yet </div>`;
+    }
 }
 function pendingTodoes() {
     renderTasks("incomplete");
 
     completedTasks.textContent = document.querySelectorAll("li.complete").length;
-    totalTasks.textContent =document.querySelectorAll("li.incomplete").length;
+    totalTasks.textContent = document.querySelectorAll("li.incomplete").length;
     progress();
-    document.getElementById('txt').textContent="completed pending tasks";
-    // if(completedTasks.textContent==0){
-    //     todoLists.innerHTML=`<div class="message">NO Pending tasks! </div>`;
-    // }
+    document.getElementById('txt').textContent = "completed pending tasks";
+    if(document.querySelectorAll("li.incomplete").length==0){
+        todoLists.innerHTML=`<div class="message">NO Pending Tasks!</div>`;
+    }
 }
 function completedTodoes() {
     renderTasks("completed");
-    
-    document.getElementById('txt').textContent="tasks completed";
+
+    document.getElementById('txt').textContent = "tasks completed";
+    if(document.querySelectorAll("li.completed").length==0){
+        todoLists.innerHTML=`<div class="message">NO Completed Tasks!Yet </div>`;
+    }
 }
 function saveTask() {
     const myTasks = JSON.stringify(tasks);
