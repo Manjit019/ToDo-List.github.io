@@ -33,7 +33,7 @@ addBtn.addEventListener("click", () => {
 
 
 function renderTasks(filter) {
-
+ 
     todoLists.innerHTML = "";
     if (tasks.length == 0) {
         totalTasks.textContent = "0";
@@ -52,7 +52,7 @@ function renderTasks(filter) {
 
 
                 li.addEventListener("click", (e) => {
-
+                    
                     if (e.target.className === "completed") {
                         e.target.className = "incomplete";    
                         task.status="incomplete";                 
@@ -82,6 +82,7 @@ function renderTasks(filter) {
 
         totalTasks.textContent = tasks.length;
         completedTasks.textContent = document.querySelectorAll("li.completed").length;
+        
         progress();
         saveTask();
 
@@ -96,11 +97,15 @@ function progress() {
         document.querySelector("#percent").textContent = "0%";
     }
     else {
-        let percent;
+        var percent;
         percent = (completedTasks.textContent / totalTasks.textContent) * 100;
         percent = Math.round(percent) + "%";
         document.querySelector(".progress").style.width = percent;
         document.querySelector("#percent").textContent = percent;
+    }
+    if(percent==="100%"){
+        blastConfetti();
+        document.querySelector("audio").play();
     }
 }
 function clearAll() {
@@ -116,6 +121,8 @@ function allTodoes() {
     if (document.querySelectorAll(".todo li").length == 0) {
         todoLists.innerHTML = `<div class="message">NO Tasks! Yet </div>`;
     }
+
+   
 }
 function pendingTodoes() {
     renderTasks("incomplete");
@@ -136,6 +143,7 @@ function completedTodoes() {
         todoLists.innerHTML = `<div class="message">NO Completed Tasks!Yet </div>`;
     }
     
+
 }
 function saveTask() {
     const myTasks = JSON.stringify(tasks);
@@ -155,3 +163,44 @@ for (let i = 0; i < menu.length; i++) {
     })
 }
 
+function blastConfetti(){
+    const count = 200,
+  defaults = {
+    origin: { y: 0.7 },
+  };
+
+function fire(particleRatio, opts) {
+  confetti(
+    Object.assign({}, defaults, opts, {
+      particleCount: Math.floor(count * particleRatio),
+    })
+  );
+}
+
+fire(0.25, {
+  spread: 26,
+  startVelocity: 55,
+});
+
+fire(0.2, {
+  spread: 60,
+});
+
+fire(0.35, {
+  spread: 100,
+  decay: 0.91,
+  scalar: 0.8,
+});
+
+fire(0.1, {
+  spread: 120,
+  startVelocity: 25,
+  decay: 0.92,
+  scalar: 1.2,
+});
+
+fire(0.1, {
+  spread: 120,
+  startVelocity: 45,
+});
+}
