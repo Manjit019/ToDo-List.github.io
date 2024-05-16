@@ -209,20 +209,26 @@ main {
   & .progress-circle {
     width: 70%;
     aspect-ratio: 1;
-    font-size:28px;
-    background: #000;
+    font-size:25px;
+    font-weight: 600;
+
+    background: #0f0e0eab;
     color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 3px;
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
+
   }
 }
-
+#task-completed{
+  font-size: 18px;
+}
 .task-container {
   width: 100%;
   background: #eaeaea6f;
