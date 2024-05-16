@@ -14,6 +14,15 @@ if (localdata != null) {
 }
 
 addBtn.addEventListener("click", () => {
+    addTask();
+})
+userInput.addEventListener("keydown", (e) => {
+    // console.log(e);
+    if (e.key == "Enter") {
+        addTask();
+    }
+})
+function addTask() {
     if (userInput.value == "") {
         alert("You must have to write something.");
     }
@@ -29,11 +38,9 @@ addBtn.addEventListener("click", () => {
         renderTasks("all");
         progress();
     }
-})
-
-
+}
 function renderTasks(filter) {
- 
+
     todoLists.innerHTML = "";
     if (tasks.length == 0) {
         totalTasks.textContent = "0";
@@ -45,23 +52,28 @@ function renderTasks(filter) {
                 let li = document.createElement("li");
                 li.className = task.status;
 
-                li.innerHTML = `<i class=""></i><span>O</span> ${task.name}  
+                li.innerHTML = `<div class="checkbox"><span>⨀</span>${task.name}</div>
 <input type="button" value="X" class="btn-danger close">
+
 `           ;
                 todoLists.appendChild(li);
-
-
+                // li.classList.add("list");
+                li.querySelector(".checkbox").classList.add(task.status);
                 li.addEventListener("click", (e) => {
-                    
-                    if (e.target.className === "completed") {
-                        e.target.className = "incomplete";    
-                        task.status="incomplete";                 
+                    console.log(e);
+                    if(e.target.tagName=="DIV"){
+                        if (e.target.className === "checkbox completed") {
+                            e.target.className = "checkbox incomplete";
+                            task.status = "incomplete";
+                            
+                        }
+                        else {
+                            e.target.className = "checkbox completed";
+                            task.status = "completed";
+    
+                        }
                     }
-                    else {
-                        e.target.className = "completed";
-                        task.status = "completed";
-                    }
-
+                  
                     if (e.target.tagName === "INPUT") {
 
                         let index = tasks.findIndex(m => m.taskId == event.target.taskId);
@@ -71,18 +83,19 @@ function renderTasks(filter) {
                         progress();
                         saveTask();
                     }
-                    completedTasks.textContent = document.querySelectorAll("li.completed").length;
+                    completedTasks.textContent = document.querySelectorAll("div.completed").length;
+                   
                     progress();
                     saveTask();
 
                 });
-               
+
             }
         });
 
         totalTasks.textContent = tasks.length;
-        completedTasks.textContent = document.querySelectorAll("li.completed").length;
-        
+        completedTasks.textContent = document.querySelectorAll("div.completed").length;
+
         progress();
         saveTask();
 
@@ -103,7 +116,7 @@ function progress() {
         document.querySelector(".progress").style.width = percent;
         document.querySelector("#percent").textContent = percent;
     }
-    if(percent==="100%"){
+    if (percent === "100%") {
         blastConfetti();
         document.querySelector("audio").play();
     }
@@ -122,7 +135,7 @@ function allTodoes() {
         todoLists.innerHTML = `<div class="message">NO Tasks! Yet </div>`;
     }
 
-   
+
 }
 function pendingTodoes() {
     renderTasks("incomplete");
@@ -142,13 +155,14 @@ function completedTodoes() {
     if (document.querySelectorAll("li.completed").length == 0) {
         todoLists.innerHTML = `<div class="message">NO Completed Tasks!Yet </div>`;
     }
-    
+
 
 }
 function saveTask() {
     const myTasks = JSON.stringify(tasks);
     localStorage.setItem("my-todoes", myTasks);
 }
+
 
 
 
@@ -163,44 +177,44 @@ for (let i = 0; i < menu.length; i++) {
     })
 }
 
-function blastConfetti(){
+function blastConfetti() {
     const count = 200,
-  defaults = {
-    origin: { y: 0.7 },
-  };
+        defaults = {
+            origin: { y: 0.7 },
+        };
 
-function fire(particleRatio, opts) {
-  confetti(
-    Object.assign({}, defaults, opts, {
-      particleCount: Math.floor(count * particleRatio),
-    })
-  );
-}
+    function fire(particleRatio, opts) {
+        confetti(
+            Object.assign({}, defaults, opts, {
+                particleCount: Math.floor(count * particleRatio),
+            })
+        );
+    }
 
-fire(0.25, {
-  spread: 26,
-  startVelocity: 55,
-});
+    fire(0.25, {
+        spread: 26,
+        startVelocity: 55,
+    });
 
-fire(0.2, {
-  spread: 60,
-});
+    fire(0.2, {
+        spread: 60,
+    });
 
-fire(0.35, {
-  spread: 100,
-  decay: 0.91,
-  scalar: 0.8,
-});
+    fire(0.35, {
+        spread: 100,
+        decay: 0.91,
+        scalar: 0.8,
+    });
 
-fire(0.1, {
-  spread: 120,
-  startVelocity: 25,
-  decay: 0.92,
-  scalar: 1.2,
-});
+    fire(0.1, {
+        spread: 120,
+        startVelocity: 25,
+        decay: 0.92,
+        scalar: 1.2,
+    });
 
-fire(0.1, {
-  spread: 120,
-  startVelocity: 45,
-});
+    fire(0.1, {
+        spread: 120,
+        startVelocity: 45,
+    });
 }
